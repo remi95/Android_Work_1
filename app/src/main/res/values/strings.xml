@@ -1,0 +1,8 @@
+<resources>
+  <string name="app_name">Devoir_Todo</string>
+  <string name="add">ADD</string>
+  <string name="todo_name">Todo name</string>
+  <string name="add_a_new_todo">Add a new todo</string>
+  <string name="save">SAVE</string>
+  <string name="back">Retour</string>
+</resources>
