@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
@@ -12,6 +13,8 @@ import com.example.remim.devoir_todo.Core.Priority;
 import com.example.remim.devoir_todo.Core.Todo;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,12 +33,26 @@ public class MainActivity extends AppCompatActivity {
     todoList.add(new Todo("Appeler mamie", Priority.High));
 
     adapter = new AdapterTodo(this, todoList);
+
+    sortTodolistByPriority(todoList);
     list.setAdapter(adapter);
 
     btnAdd.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
         goToFormView();
+      }
+    });
+  }
+
+  public void sortTodolistByPriority(ArrayList<Todo> todoList) {
+    Collections.sort(todoList, new Comparator<Todo>() {
+      @Override
+      public int compare(Todo t1, Todo t2) {
+        if (t1.getPriority() == t2.getPriority())
+          return t1.getName().compareTo(t2.getName());
+        else
+          return t1.getPriority().compareTo(t2.getPriority());
       }
     });
   }
@@ -60,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
           Priority todoPriority = helper.getTodoPriority(priority);
 
           todoList.add(new Todo(todoName, todoPriority));
+          sortTodolistByPriority(todoList);
           list.setAdapter(adapter);
         }
       }

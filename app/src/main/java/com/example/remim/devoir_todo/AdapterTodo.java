@@ -1,5 +1,6 @@
 package com.example.remim.devoir_todo;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
@@ -38,13 +39,12 @@ public class AdapterTodo extends ArrayAdapter<Todo> {
       LayoutInflater inflater;
       inflater = LayoutInflater.from(getContext());
       convertView = inflater.inflate(resourceItem, null);
-
-
     }
 
     LinearLayout todoItem = convertView.findViewById(R.id.todo_item);
     TextView todoName = convertView.findViewById(R.id.todo_name);
     CheckBox checkbox = convertView.findViewById(R.id.checkbox);
+    LinearLayout priorityIndicator = convertView.findViewById(R.id.priority_indicator);
 
     checkbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
       @Override
@@ -57,13 +57,12 @@ public class AdapterTodo extends ArrayAdapter<Todo> {
     Priority currentPriority = currentTodo.getPriority();
 
     todoName.setText(currentName);
-    checkbox.setTag(position);
-    if (currentPriority == Priority.High)
-      todoItem.setBackgroundColor(Color.RED);
-    else
-      todoItem.setBackgroundColor(Color.WHITE);
-
     checkbox.setChecked(currentTodo.isDone());
+
+    if (currentPriority == Priority.High)
+      priorityIndicator.setBackgroundResource(R.color.red);
+    else
+      priorityIndicator.setBackgroundResource(R.color.light_grey);
 
     return convertView;
   }

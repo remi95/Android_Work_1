@@ -5,20 +5,29 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:padding="20dp"
-    android:focusable="false">
+    >
+
+  <LinearLayout
+    android:id="@+id/priority_indicator"
+    android:layout_width="20dp"
+    android:layout_height="match_parent"
+    android:orientation="vertical"/>
 
   <CheckBox
     android:id="@+id/checkbox"
-    android:layout_width="20dp"
-    android:layout_height="20dp"
-    android:layout_marginRight="20dp"
-    android:focusable="false"/>
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_margin="20dp"
+    android:buttonTint="@color/grey"
+    />
 
   <TextView
     android:id="@+id/todo_name"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="exemple"/>
+    android:textSize="20sp"
+    android:layout_gravity="center"
+    />
 
 </LinearLayout>

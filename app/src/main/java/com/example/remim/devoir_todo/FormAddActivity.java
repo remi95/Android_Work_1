@@ -35,7 +35,6 @@ public class FormAddActivity extends AppCompatActivity {
         addTodo();
       }
     });
-
     btnBack.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
